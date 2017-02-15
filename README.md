@@ -1,8 +1,11 @@
 #Setup:
 
 ##### 1. in your `~/TIY/assignments` : rename assingment-20 to assigment-XXX 
+```
+mv assignment-20 assignment-XXX
+```
 
-##### 2. clone this repository into `assignment-20` directory
+##### 2. clone this repository into a now-new `assignment-20` directory
 ```
 git clone git@github.com:t3patterson/webpack-node-proxy-server.git assignment-20
 
@@ -25,18 +28,18 @@ npm install
   ```
   /proxy?api=http://www.bbc.co.uk/radio1/playlist.json
   ```
-  - examples on how to use:
+  - examples on how to use in applicatione:
 
   **jQuery**
   ```
-  $.getJSON('http://www.bbc.co.uk/radio1/playlist.json').then(...)
+  $.getJSON('/proxy?http://www.bbc.co.uk/radio1/playlist.json').then(...)
   ```
 
 
   **Backbone** 
   ```
   let SomeCollection = Backbone.Collection.extend({
-    url: 'http://www.bbc.co.uk/radio1/playlist.json',
+    url: '/proxy?http://www.bbc.co.uk/radio1/playlist.json',
   })
   ```
 
@@ -44,11 +47,11 @@ npm install
 
 The node webserver is running a web server that will serve the index.html file from that location.
 
-#####7 transfer all the files/folders from your previous `src/` into the `src/` of this build
-
-(from `~/TIY/assignments/assignment-20`)
+#####7 copy all the files/folders from your previous `src/` into the `src/` of this new assigment build
 
 ```
-mv ../assignment-XXX/src .
+cp -r ../assignment-XXX/src/* ./src/
 
 ```
+
+#####8 move the `assignment-XXX/index.html` into `assignment-20/dist/index.html`
