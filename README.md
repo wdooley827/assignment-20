@@ -1,87 +1,35 @@
-#ES6 Module Bundler Setup
+#Setup:
 
-##Webpack Configuration:
-```
-const webpack = require('webpack')
-const nodeEnv = process.env.NODE_ENV || 'production'
+##### 1. clone this repository and npm install
 
-module.exports = {
-  devtool : 'source-map',
-  entry:   { filename: './src/index.js' },
-  output : { filename: './dist/js/app.js' },
-  module: {
-    loaders: [	    
-	 ]
-  },
-  plugins: [
-     //uglify js
-     new webpack.optimize.UglifyJsPlugin({
-			compress: { warnings: false }, 
-			output: {comments: false},
-         sourceMap: true
-	  }),
-	
-     //env plugin
-	  new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
-	  }),
-  ]
-}
+##### 2. In terminal have 2 tabs open
 
-```
+##### 3. In one tab, run the webpack task runner. 
+  ```
+  npm run go
+  ```
+
+##### 4. In another tab, run the proxy server
+  ```
+  npm start
+  ```
+
+##### 5. use the proxy server to access a non-CORS/non-JSONP API under by sending requests to the proxy server endpoint:
+  ```
+  /proxy?api=http://www.bbc.co.uk/radio1/playlist.json
+  ```
+  - example:
+
+  **jQuery**
+  ```
+  $.getJSON('http://www.bbc.co.uk/radio1/playlist.json').then(...)
+  ```
 
 
-#Configure #ES6
-#### In `package.json`
-- babel-core
-- babel-loader
-- babel-preset-es2015
-
-#### ES6: In `webpack.config.js`
-```
-	...
-   loaders: [
-		{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: 'babel-loader',
-			query: {
-				presets: ['es2015']
-			}
-		},
-   ...
-```
-
-
-### Configure Scss
-#### (in `package.json`
-```
-    "css-loader": "^0.26.1",
-    "sass-loader": "^5.0.1",
-    "style-loader": "^0.13.1",
-    "node-sass": "^4.5.0",
-    "extract-text-webpack-plugin": "^2.0.0-beta.5",
-```
-
-#### (2) in `webpack.config.js`
-```
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-modules: {
-  loaders: [
-	  ...
-     {
-		  test: /\.scss$/,
-		  loader: ExtractTextPlugin.extract({fallbackLoader: "style-loader", loader: "css-loader!sass-loader"})		 
-	  },
-	]
-  },
-
-  plugins: {
-	 ...
-    new ExtractTextPlugin({filename: './dist/styles.css', allChunks: true})
-  }
-
-}
-  
-```
+  **Backbone** 
+  ```
+  let SomeCollection = Backbone.Collection.extend({
+    url: 'http://www.bbc.co.uk/radio1/playlist.json',
+  })
+  ```
+#####6 go to `http://localhost:3000` to see your `index.html` file
