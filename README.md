@@ -32,4 +32,6 @@
     url: 'http://www.bbc.co.uk/radio1/playlist.json',
   })
   ```
-#####6 go to `http://localhost:3000` to see your `index.html` file
+
+#####6 go to `http://localhost:3000` to see your `index.html` file.
+The webserver is serving files from that location
