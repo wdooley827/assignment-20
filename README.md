@@ -2,7 +2,7 @@
 
 ##### 1. in your `~/TIY/assignments` : rename assingment-20 to assigment-XXX 
 
-##### 2. clone this repository as 
+##### 2. clone this repository into `assignment-20` directory
 ```
 git clone git@github.com:t3patterson/webpack-node-proxy-server.git assignment-20
 
