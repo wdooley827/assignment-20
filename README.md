@@ -45,3 +45,10 @@ npm install
 The node webserver is running a web server that will serve the index.html file from that location.
 
 #####7 transfer all the files/folders from your previous `src/` into the `src/` of this build
+
+(from `~/TIY/assignments/assignment-20`)
+
+```
+mv ../assignment-XXX/src .
+
+```
