@@ -32,14 +32,14 @@ npm install
 
   **jQuery**
   ```
-  $.getJSON('/proxy?http://www.bbc.co.uk/radio1/playlist.json').then(...)
+  $.getJSON('/proxy?api=http://www.bbc.co.uk/radio1/playlist.json').then(...)
   ```
 
 
   **Backbone** 
   ```
   let SomeCollection = Backbone.Collection.extend({
-    url: '/proxy?http://www.bbc.co.uk/radio1/playlist.json',
+    url: '/proxy?api=http://www.bbc.co.uk/radio1/playlist.json',
   })
   ```
 
