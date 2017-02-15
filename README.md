@@ -25,7 +25,7 @@ npm install
   ```
   /proxy?api=http://www.bbc.co.uk/radio1/playlist.json
   ```
-  - example:
+  - examples on how to use:
 
   **jQuery**
   ```
