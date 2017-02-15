@@ -1,6 +1,13 @@
 #Setup:
 
-##### 1. clone this repository and npm install
+##### 1. in your `~/TIY/assignments` : rename assingment-20 to assigment-XXX 
+
+##### 2. clone this repository as 
+```
+git clone git@github.com:t3patterson/webpack-node-proxy-server.git
+
+npm install
+```
 
 ##### 2. In terminal have 2 tabs open
 
@@ -34,4 +41,7 @@
   ```
 
 #####6 go to `http://localhost:3000` to see your `index.html` file.
-The webserver is serving files from that location
+
+The node webserver is running a web server that will serve the index.html file from that location.
+
+#####7 transfer all the files/folders from your previous `src/` into the `src/` of this build
