@@ -4,7 +4,7 @@
 
 ##### 2. clone this repository as 
 ```
-git clone git@github.com:t3patterson/webpack-node-proxy-server.git
+git clone git@github.com:t3patterson/webpack-node-proxy-server.git assignment-20
 
 npm install
 ```
