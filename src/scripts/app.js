@@ -1,9 +1,11 @@
-console.log('wowow');
 import $ from 'jquery';
 import Backbone from 'backbone';
-
-import LandingView from './views/view-home.js'
+import {LandingView} from './views/viewHome.js'
+import {RadioView} from './views/viewRadio.js'
 import {PlaylistModel, PlaylistCollection} from './models/model.js'
+
+
+let insert = document.querySelector('.test')
 
 const AppRouter = Backbone.Router.extend({
 	initialize: function(){
@@ -13,57 +15,40 @@ const AppRouter = Backbone.Router.extend({
 
 	routes: {
 		'' : 'showHomePage',
-		'bbc1' : 'showBBCRadio1',
-		'bbc2' : 'showBBCRadio2',
+		'radio/1' : 'showBBCRadio1',
+		'radio/2' : 'showBBCRadio2',
 		'*default' : 'showErrorPage',
 	},
-// old way have to fix
 
-showHomePage: function(){
-	let view = new LandingView()
-	view.render()
-	// console.log('hiiiii')
-	// $.getJSON(`/proxy?api=http://www.bbc.co.uk/radio1/playlist.json`).then(function(serverRes){
-	// 	// console.log(serverRes)
-	// 	let test = serverRes.playlist.a
-	// 	console.log(test)
-	// 	let testHtml = test.map(function(testObj){
-	// 		// console.log(testObj)
-	// 		return `
-	// 		<div class="testDisplay">
-	// 			<p>${testObj.artist}</p>
-	// 		</div>
-	// 		`
-		// })
-		//
-		// 	console.log(testHtml)
-		// 	document.querySelector('.test').innerHTML = testHtml
-		// })
+	showHomePage: function(){
+     let bbcRadioCollection = new PlaylistCollection('1');
+       bbcRadioCollection.fetch().then(function(serverRes){
+				 console.log(serverRes)
+         let results = serverRes.playlist.introducing;
+				 console.log(results)
+           insert.innerHTML = LandingView(results);
+       });
+   },
 
-	},
+   showBBCRadio1: function(){
+     let bbcRadioCollection = new PlaylistCollection('1');
+       bbcRadioCollection.fetch().then(function(serverRes){
+         let results = serverRes.playlist.a;
+           insert.innerHTML = RadioView(results);
+     });
+   },
 
-//using collection
-showBBCRadio1: function(){
-		let bbcRadioCollInstance = new PlaylistCollection()
-		bbcRadioCollInstance.fetch().then(function(serverRes){
-			console.log(serverRes)
+   showBBCRadio2: function(){
+     let bbcRadioCollection = new PlaylistCollection('2');
+       bbcRadioCollection.fetch().then(function(serverRes){
+         let results = serverRes.playlist.a;
+           insert.innerHTML = RadioView(results);
+       });
+   },
 
-			return `
-			<div class="test2">
-				<p>${serverRes.artist}</p>
-			</div>
-			`
-			document.querySelector('.test').innerHTML = bbcRadioCollInstance
-		})
-},
+	 showErrorPage: function(){
+		 insert.innerHTML = `<h1 class="default">Wrong turn!</h1>`;
+	 }
 })
-const myApp = new AppRouter()
-// showHomePage: function(){
-// 	console.log("hello")
-// 	let appContainer = document.querySelector('#app-container')
-// }
-//
-// showBBCRadio1: function(){
-// 	let appContainer = document.querySelector('#app-container')
-//
-// }
+
+const myApp = new AppRouter();

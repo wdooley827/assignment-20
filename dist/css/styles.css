@@ -1,10 +1,26 @@
 body {
-  background: purple; }
+  background: black; }
+
+h1 {
+  color: white; }
 
 h2 {
-  color: red; }
+  color: black; }
 
-h3 {
-  color: green; }
+.bbcNav {
+  background: white; }
+
+.caption {
+  height: 200px; }
+
+.artist {
+  margin-top: 20px; }
+
+.home_introducing {
+  text-align: center; }
+
+.home_introducing img {
+  width: 400px;
+  height: 400px; }
 
 /*# sourceMappingURL=styles.css.map*/

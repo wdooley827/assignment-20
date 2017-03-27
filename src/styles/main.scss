@@ -1,13 +1,28 @@
 body{
-	background: purple;
+	background: black;
 }
 
-$txt-color: red;
+h1{
+	color: white;
+}
 
 h2{
-	color: $txt-color;
+	color: black;
+}
+.bbcNav{
+	background: white;
 }
 
-h3{
-	color: green;
+.caption{
+	height: 200px;
+}
+.artist{
+	margin-top: 20px;
+}
+.home_introducing{
+	text-align: center;
+}
+.home_introducing img{
+	width: 400px;
+	height: 400px;
 }
